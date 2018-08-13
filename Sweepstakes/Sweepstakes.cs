@@ -8,14 +8,21 @@ namespace Sweepstakes
 {
     class Sweepstakes
     {
-        
-        public Dictionary<int, string> contestants = new Dictionary<int, string>();
+
+        public Dictionary<int, Contestant> contestants;
+        Random random;
+        string name;
+
+        public Sweepstakes(string name)
+        {
+            contestants = new Dictionary<int, Contestant>();
+            name = this.name;
+        }
 
         private void RegisterContestant(Contestant contestant)
         {
-            string fullName = contestant.GetContestantFullName();
             contestant.registrationNumber = contestants.Count + 1;
-            contestants.Add(contestant.registrationNumber, fullName);
+            contestants.Add(contestant.registrationNumber, contestant);
         }
 
         private void PrintContestantInfo(Contestant contestant)
@@ -26,6 +33,13 @@ namespace Sweepstakes
             Console.WriteLine($"Registration number: {contestant.registrationNumber}");
             Console.WriteLine("Press Enter to go back.");
             Console.ReadLine();
+        }
+
+        private string PickWinner()
+        {
+            int numberPicked = random.Next(1, contestants.Count + 1);
+            string nameOfWinner = $"{contestants[numberPicked].firstName} + {contestants[numberPicked].lastName}";
+            return nameOfWinner;
         }
 
         
