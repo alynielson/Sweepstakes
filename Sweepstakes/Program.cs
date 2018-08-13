@@ -10,9 +10,9 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
-            UserInterface.GetString("first name");
-            UserInterface.GetString("last name");
-            UserInterface.GetEmailAddress();
+            UserInterface.InitialDisplay();
+            string stackOrQueue = UserInterface.GetManagerChoice();
+            MarketingFirm newFirm = new MarketingFirm(stackOrQueue);
         }
     }
 }

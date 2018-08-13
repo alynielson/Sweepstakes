@@ -41,9 +41,15 @@ namespace Sweepstakes
             return emailAddress;
         } 
 
-        public static string GetWhichManager()
+        public static void InitialDisplay()
+        {
+            Console.WriteLine("Welcome to your sweepstakes manager!");
+        }
+
+        public static string GetManagerChoice()
         {
             string managerChoice;
+            Console.WriteLine("Will your sweepstakes be maintained in a stack or a queue?");
             do
             {
                 managerChoice = GetString("(S) for stack or (Q) for queue");
@@ -57,5 +63,7 @@ namespace Sweepstakes
             while (managerChoice != "q" && managerChoice != "s");
             return managerChoice;
         }
+
+
     }
 }

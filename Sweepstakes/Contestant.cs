@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    class Contestant
+    public class Contestant
     {
-        string firstName;
-        string lastName;
-        string emailAddress;
-        int registrationNumber;
+        public string firstName;
+        public string lastName;
+        public string emailAddress;
+        public int registrationNumber;
+
+       
 
         public Contestant()
         {
             firstName = UserInterface.GetString("first name");
             lastName = UserInterface.GetString("last name");
             emailAddress = UserInterface.GetEmailAddress();
+        }
+
+        public string GetContestantFullName()
+        {
+            string fullName = $"{firstName} {lastName}";
+            return fullName;
         }
     }
 }
