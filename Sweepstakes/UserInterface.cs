@@ -73,6 +73,11 @@ namespace Sweepstakes
             return action;
         }
 
+        public static void NotFoundMessage(string whatNotFound)
+        {
+            Console.WriteLine($"{whatNotFound} was not found.");
+        }
+
         public static int GetNumberResponse(int min, int max)
         {
             int numberChoice = 0;
@@ -88,6 +93,20 @@ namespace Sweepstakes
             while (numberChoice < min || numberChoice > max);
             return numberChoice;
 
+        }
+
+        public static void ShowAddSuccessMessage(string whatWasAdded)
+        {
+            Console.WriteLine($"New {whatWasAdded} successfully added!");
+        }
+
+        public static void SweepstakesFoundMenu(string sweepstakesName)
+        {
+            Console.WriteLine($"Sweepstake {sweepstakesName}");
+            Console.WriteLine("(1) Add a new contestant.");
+            Console.WriteLine("(2) Find a contestant/view contestant details.");
+            Console.WriteLine("(3) View sweepstake details");
+            int action = GetNumberResponse(1, 3);
         }
     }
 }

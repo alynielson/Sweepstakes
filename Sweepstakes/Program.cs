@@ -13,7 +13,13 @@ namespace Sweepstakes
             UserInterface.InitialDisplay();
             string stackOrQueue = UserInterface.GetManagerChoice();
             MarketingFirm newFirm = new MarketingFirm(stackOrQueue);
-            UserInterface.FirmSearchOrAddMenu();
+            bool stillWorking = true;
+            while (stillWorking == true)
+            {
+                int action = UserInterface.FirmSearchOrAddMenu();
+                newFirm.ConvertUserChoiceToAction(action);
+                newFirm.FindASweepstakes();
+            }
         }
     }
 }
