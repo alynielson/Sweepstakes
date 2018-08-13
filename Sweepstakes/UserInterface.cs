@@ -13,7 +13,7 @@ namespace Sweepstakes
             string response = "";
             do
             {
-                Console.WriteLine($"Enter your {typeOfString}:");
+                Console.WriteLine($"Enter {typeOfString}:");
                 response = Console.ReadLine();
                 Console.Clear();
                 if (response == "")
@@ -40,5 +40,22 @@ namespace Sweepstakes
             while (emailAddress.Contains("@") == false || emailAddress.Contains(".") == false);
             return emailAddress;
         } 
+
+        public static string GetWhichManager()
+        {
+            string managerChoice;
+            do
+            {
+                managerChoice = GetString("(S) for stack or (Q) for queue");
+                Console.Clear();
+                managerChoice = managerChoice.ToLower();
+                if (managerChoice != "q" && managerChoice != "s")
+                {
+                    Console.WriteLine("Didn't type Q or S! Try again.");
+                }
+            }
+            while (managerChoice != "q" && managerChoice != "s");
+            return managerChoice;
+        }
     }
 }
