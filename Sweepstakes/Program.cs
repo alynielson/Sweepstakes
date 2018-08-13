@@ -10,7 +10,8 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
-            UserInterface.GetFirstName();
+            UserInterface.GetName("first");
+            UserInterface.GetName("last");
         }
     }
 }

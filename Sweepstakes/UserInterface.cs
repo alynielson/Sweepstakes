@@ -8,12 +8,12 @@ namespace Sweepstakes
 {
     public static class UserInterface
     {
-        public static string GetFirstName()
+        public static string GetName(string firstOrLast)
         {
             string response = "";
             do
             {
-                Console.WriteLine("Enter your first name:");
+                Console.WriteLine($"Enter your {firstOrLast} name:");
                 response = Console.ReadLine();
                 Console.Clear();
                 if (response == "")
