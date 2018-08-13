@@ -16,12 +16,24 @@ namespace Sweepstakes
         public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
             queue.Enqueue(sweepstakes);
+            
         }
 
-        //public Sweepstakes GetSweepstakes()
-        //{
-            
-        //    return sweepstakes;
-        //}
+        public Sweepstakes GetSweepstakes()
+        {
+            string userEnteredSweepstakes = UserInterface.GetString("the sweepstakes to search for");
+            foreach (Sweepstakes sweepstakes in queue)
+            {
+                if (userEnteredSweepstakes.ToLower().Trim() == sweepstakes.name.ToLower().Trim())
+                {
+                    return sweepstakes;
+                }
+            }
+            return null;   
+        }
+
+       
+
+        
     }
 }
