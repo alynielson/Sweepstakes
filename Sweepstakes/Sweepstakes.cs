@@ -13,9 +13,21 @@ namespace Sweepstakes
 
         private void RegisterContestant(Contestant contestant)
         {
-            string fullName = $"{contestant.firstName + contestant.lastName}";
+            string fullName = contestant.GetContestantFullName();
             contestant.registrationNumber = contestants.Count + 1;
             contestants.Add(contestant.registrationNumber, fullName);
         }
+
+        private void PrintContestantInfo(Contestant contestant)
+        {
+            Console.WriteLine($"First name: {contestant.firstName}");
+            Console.WriteLine($"Last name: {contestant.lastName}");
+            Console.WriteLine($"Email: {contestant.emailAddress}");
+            Console.WriteLine($"Registration number: {contestant.registrationNumber}");
+            Console.WriteLine("Press Enter to go back.");
+            Console.ReadLine();
+        }
+
+        
     }
 }
