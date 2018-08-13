@@ -64,6 +64,30 @@ namespace Sweepstakes
             return managerChoice;
         }
 
+        public static int FirmSearchOrAddMenu()
+        {
+            Console.WriteLine("Choose an option.");
+            Console.WriteLine("(1) Add a new sweepstakes.");
+            Console.WriteLine("(2) Search for a sweepstakes to view or edit.");
+            int action = GetNumberResponse(1,2);
+            return action;
+        }
 
+        public static int GetNumberResponse(int min, int max)
+        {
+            int numberChoice = 0;
+            do
+            {
+                string response = Console.ReadLine();
+                Int32.TryParse(response, out numberChoice);
+                if (numberChoice < min || numberChoice > max)
+                {
+                    Console.WriteLine("Not a valid choice! Try again.");
+                }
+            }
+            while (numberChoice < min || numberChoice > max);
+            return numberChoice;
+
+        }
     }
 }

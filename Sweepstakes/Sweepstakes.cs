@@ -12,7 +12,7 @@ namespace Sweepstakes
         public Dictionary<int, Contestant> contestants;
         Random random;
         public string name;
-        //public int id;
+        
 
        
 

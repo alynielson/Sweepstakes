@@ -13,6 +13,7 @@ namespace Sweepstakes
             UserInterface.InitialDisplay();
             string stackOrQueue = UserInterface.GetManagerChoice();
             MarketingFirm newFirm = new MarketingFirm(stackOrQueue);
+            UserInterface.FirmSearchOrAddMenu();
         }
     }
 }
