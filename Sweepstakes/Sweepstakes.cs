@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sweepstakes
+namespace Sweepstakes 
 {
-    public class Sweepstakes
+    public class Sweepstakes : Subject
     {
 
         public Dictionary<int, Contestant> contestants;
@@ -25,6 +25,18 @@ namespace Sweepstakes
             status = "Registering contestants";
         }
 
+        public void Attach(Observer observer)
+        {
+            Register(observer);
+        }
+
+        public override void Notify()
+        {
+            foreach (Observer observer in observers)
+            {
+                observer.Update();
+            }
+        }
         private void RegisterContestant(Contestant contestant)
         {
             contestant.registrationNumber = contestants.Count + 1;

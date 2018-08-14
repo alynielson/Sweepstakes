@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    public class Contestant
+    public class Contestant : Observer
     {
         public string firstName;
         public string lastName;
@@ -20,6 +20,11 @@ namespace Sweepstakes
             firstName = UserInterface.GetString("first name");
             lastName = UserInterface.GetString("last name");
             emailAddress = UserInterface.GetEmailAddress();
+        }
+
+        public override void Update()
+        {
+
         }
 
         public string GetContestantFullName()
