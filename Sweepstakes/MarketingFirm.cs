@@ -29,10 +29,12 @@ namespace Sweepstakes
         public void FirmMenu()
         {
             UserInterface.FirmSearchOrAddMenu();
-            int action = UserInterface.GetNumberResponse(1, 3);
+            int action = UserInterface.GetNumberResponse(1, 4);
             DecideFirmMenuAction(action);
                
         }
+
+        
 
         
         public void DecideFirmMenuAction(int userChoice)
@@ -51,6 +53,13 @@ namespace Sweepstakes
                         int action = UserInterface.GetNumberResponse(1, 6);
                         foundSweepstakes.ConvertUserChoiceToAction(action);
                     }
+                    break;
+                case 3:
+                    Console.Clear();
+                    _sweepstakesManager.DisplayAllSweepstakes();
+                    Console.WriteLine("Press Enter to continue.");
+                    Console.ReadLine();
+                    Console.Clear();
                     break;
                 default:
                     stillWorking = false;

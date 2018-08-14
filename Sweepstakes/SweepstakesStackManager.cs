@@ -30,5 +30,19 @@ namespace Sweepstakes
             }
             return null;
         }
+
+        public void DisplayAllSweepstakes()
+        {
+            int itemNumber = 1;
+            foreach (Sweepstakes sweepstakes in stack)
+            {
+                Console.WriteLine($"({itemNumber}) {sweepstakes.name}");
+                itemNumber++;
+            }
+            if (stack.Count == 0)
+            {
+                Console.WriteLine("No sweepstakes have been created!");
+            }
+        }
     }
 }
