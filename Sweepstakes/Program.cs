@@ -16,9 +16,11 @@ namespace Sweepstakes
             bool stillWorking = true;
             while (stillWorking == true)
             {
-                int action = UserInterface.FirmSearchOrAddMenu();
-                newFirm.ConvertUserChoiceToAction(action);
-                newFirm.FindASweepstakes();
+                newFirm.FirmMenu();
+
+
+                
+               
             }
         }
     }

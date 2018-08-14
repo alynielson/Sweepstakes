@@ -23,7 +23,7 @@ namespace Sweepstakes
             string userEnteredSweepstakes = UserInterface.GetString("the sweepstakes to search for");
             foreach (Sweepstakes sweepstakes in stack)
             {
-                if (userEnteredSweepstakes.ToLower().Trim() == sweepstakes.name.ToLower().Trim())
+                if (userEnteredSweepstakes.ToLower().Trim() == sweepstakes.name)
                 {
                     return sweepstakes;
                 }

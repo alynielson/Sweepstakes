@@ -64,13 +64,11 @@ namespace Sweepstakes
             return managerChoice;
         }
 
-        public static int FirmSearchOrAddMenu()
+        public static void FirmSearchOrAddMenu()
         {
             Console.WriteLine("Choose an option.");
             Console.WriteLine("(1) Add a new sweepstakes.");
             Console.WriteLine("(2) Search for a sweepstakes to view or edit.");
-            int action = GetNumberResponse(1,2);
-            return action;
         }
 
         public static void NotFoundMessage(string whatNotFound)
@@ -100,13 +98,26 @@ namespace Sweepstakes
             Console.WriteLine($"New {whatWasAdded} successfully added!");
         }
 
+        public static void FoundMessage(string whatFound)
+        {
+            Console.WriteLine($"{whatFound} was found");
+        }
+
         public static void SweepstakesFoundMenu(string sweepstakesName)
         {
             Console.WriteLine($"Sweepstake {sweepstakesName}");
             Console.WriteLine("(1) Add a new contestant.");
-            Console.WriteLine("(2) Find a contestant/view contestant details.");
-            Console.WriteLine("(3) View sweepstake details");
-            int action = GetNumberResponse(1, 3);
+            Console.WriteLine("(2) Find a contestant.");
+            Console.WriteLine("(3) View sweepstake details.");
+            Console.WriteLine("(4) Choose the winner.");
+            Console.WriteLine("(5) Back to search for/add new sweepstakes page.");
+        }
+
+        public static bool CheckWhetherNumberOrNot(string nameOrRegistrationNumber)
+        {
+            int possibleRegistrationNumber;
+            bool isNumeric = Int32.TryParse(nameOrRegistrationNumber, out possibleRegistrationNumber);
+            return isNumeric;
         }
     }
 }

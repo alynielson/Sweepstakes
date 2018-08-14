@@ -17,8 +17,8 @@ namespace Sweepstakes
 
         public Contestant()
         {
-            firstName = UserInterface.GetString("first name");
-            lastName = UserInterface.GetString("last name");
+            firstName = UserInterface.GetString("first name").ToLower().Trim();
+            lastName = UserInterface.GetString("last name").ToLower().Trim();
             emailAddress = UserInterface.GetEmailAddress();
         }
 

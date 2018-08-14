@@ -24,7 +24,16 @@ namespace Sweepstakes
             UserInterface.ShowAddSuccessMessage("sweepstakes");
         }
 
-        public void ConvertUserChoiceToAction(int userChoice)
+        public void FirmMenu()
+        {
+            UserInterface.FirmSearchOrAddMenu();
+            int action = UserInterface.GetNumberResponse(1, 3);
+            DecideFirmMenuAction(action);
+               
+        }
+
+        
+        public void DecideFirmMenuAction(int userChoice)
         {
             switch (userChoice)
             {
@@ -32,12 +41,22 @@ namespace Sweepstakes
                     AddSweepstakes();
                     break;
                 case 2:
-                    FindASweepstakes();
+                    Sweepstakes foundSweepstakes = FindASweepstakes();
+                    if (foundSweepstakes != null)
+                    {
+                        UserInterface.SweepstakesFoundMenu(foundSweepstakes.name);
+                        int action = UserInterface.GetNumberResponse(1, 6);
+                        foundSweepstakes.ConvertUserChoiceToAction(action);
+                    }
                     break;
+                default:
+                    break;
+                    
+                    
             }
         }
 
-        public void FindASweepstakes()
+        private Sweepstakes FindASweepstakes()
         {
             Sweepstakes foundSweepstakes = _sweepstakesManager.GetSweepstakes();
             if (foundSweepstakes == null)
@@ -46,8 +65,9 @@ namespace Sweepstakes
             }
             else
             {
-                UserInterface.SweepstakesFoundMenu(foundSweepstakes.name);
+                UserInterface.FoundMessage($"Sweepstake {foundSweepstakes.name}");
             }
+            return foundSweepstakes;
         }
 
         
