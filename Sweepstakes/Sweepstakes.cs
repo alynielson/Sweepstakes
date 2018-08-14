@@ -132,7 +132,8 @@ namespace Sweepstakes
                     Contestant contestant = SearchForContestant();
                     if (contestant != null)
                     {
-
+                        PrintContestantInfo(contestant);
+                        break;
                     }
                     break;
                 case 3:
