@@ -32,15 +32,28 @@ namespace Sweepstakes
 
         public override void Notify()
         {
-            foreach (Observer observer in observers)
+            string subject = $"{name} winner announcement";
+            string winnerBody = $"Hello {winner.firstName},\n\nYou've been chosen as the winner for {name}! Call 555-555-5555 to claim your prize.\n\nRegards,\nThe Marketing Firm";
+            foreach (Contestant contestant in observers)
             {
-                observer.Update();
+                if (contestant.Equals(winner))
+                {
+                    contestant.Update(contestant.emailAddress, subject, winnerBody);
+                }
+                else
+                {
+                    string nonWinnerBody = $"Hello {contestant.firstName},\n\nThe winner of {name} has been chosen and notified. Thanks for your participation! Register for more of our sweepstakes!\n\nRegards,\nThe Marketing Firm";
+                    contestant.Update(contestant.emailAddress, subject, nonWinnerBody);
+                }
             }
         }
+
+       
         private void RegisterContestant(Contestant contestant)
         {
             contestant.registrationNumber = contestants.Count + 1;
             contestants.Add(contestant.registrationNumber, contestant);
+            Attach(contestant);
             Console.WriteLine("Contestant successfully registered! Press Enter to continue.");
             Console.ReadLine();
         }
@@ -162,6 +175,7 @@ namespace Sweepstakes
                 string nameOfWinner = $"{contestants[numberPicked].firstName} {contestants[numberPicked].lastName}";
                 status = "Winner chosen";
                 winner = contestants[numberPicked];
+                Notify();
                 return nameOfWinner;
             }
         }
