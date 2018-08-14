@@ -78,7 +78,7 @@ namespace Sweepstakes
 
         private Contestant SearchForContestant()
         {
-            string nameOrRegistrationNumber = UserInterface.GetString("a name or registration number to search");
+            string nameOrRegistrationNumber = UserInterface.GetString("a name (first, last, or full) or registration number to search");
             bool isPossibleRegistrationNumber = UserInterface.CheckWhetherNumberOrNot(nameOrRegistrationNumber);
             if (isPossibleRegistrationNumber == true)
             {
