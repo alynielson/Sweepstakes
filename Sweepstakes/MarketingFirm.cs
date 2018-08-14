@@ -46,11 +46,15 @@ namespace Sweepstakes
                     break;
                 case 2:
                     Sweepstakes foundSweepstakes = FindASweepstakes();
-                    foundSweepstakes.isStillEditing = true;
+                    if (foundSweepstakes != null)
+                    {
+                        foundSweepstakes.isStillEditing = true;
+                    }
+                    
                     while (foundSweepstakes != null && foundSweepstakes.isStillEditing == true)
                     {
                         UserInterface.SweepstakesFoundMenu(foundSweepstakes.name);
-                        int action = UserInterface.GetNumberResponse(1, 6);
+                        int action = UserInterface.GetNumberResponse(1, 7);
                         foundSweepstakes.ConvertUserChoiceToAction(action);
                     }
                     break;

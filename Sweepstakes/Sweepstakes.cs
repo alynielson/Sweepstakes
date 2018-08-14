@@ -189,11 +189,31 @@ namespace Sweepstakes
                     }
                     Console.Clear();
                     break;
+                case 5:
+                    Console.Clear();
+                    DisplayAllContestants();
+                    break;
                 default:
                     isStillEditing = false;
                     Console.Clear();
                     break;
             }
+        }
+
+        private void DisplayAllContestants()
+        {
+            int itemNumber = 0;
+            foreach (KeyValuePair<int,Contestant> item in contestants)
+            {
+                Console.WriteLine($"({itemNumber}) {item.Value.firstName} {item.Value.lastName}");
+            }
+            if (contestants.Count == 0)
+            {
+                Console.WriteLine("No contestants are entered in this sweepstake");
+            }
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+            Console.Clear();
         }
 
         private void GetDetails()

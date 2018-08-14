@@ -114,10 +114,11 @@ namespace Sweepstakes
         {
             Console.WriteLine($"Sweepstake {sweepstakesName}");
             Console.WriteLine("(1) Add a new contestant.");
-            Console.WriteLine("(2) Find a contestant.");
+            Console.WriteLine("(2) Find a contestant to view their information.");
             Console.WriteLine("(3) View sweepstake details.");
             Console.WriteLine("(4) Choose the winner.");
-            Console.WriteLine("(5) Back to search for/add new sweepstakes page.");
+            Console.WriteLine("(5) View a list of all registered contestants.");
+            Console.WriteLine("(6) Back to search for/add new sweepstakes page.");
         }
 
         public static bool CheckWhetherNumberOrNot(string nameOrRegistrationNumber)
