@@ -45,6 +45,8 @@ namespace Sweepstakes
             else
             {
                 Console.WriteLine("No matching contestant found.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
                 return null;
             }
         }
@@ -202,10 +204,11 @@ namespace Sweepstakes
 
         private void DisplayAllContestants()
         {
-            int itemNumber = 0;
+            int itemNumber = 1;
             foreach (KeyValuePair<int,Contestant> item in contestants)
             {
                 Console.WriteLine($"({itemNumber}) {item.Value.firstName} {item.Value.lastName}");
+                itemNumber++;
             }
             if (contestants.Count == 0)
             {
