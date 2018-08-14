@@ -138,12 +138,22 @@ namespace Sweepstakes
                     }
                     break;
                 case 3:
+                    GetDetails();
                     break;
                 case 4:
                     string winner = PickWinner();
                     UserInterface.DisplayWinner(winner);
                     break;
+                default:
+                    break;
             }
+        }
+
+        private void GetDetails()
+        {
+            Console.WriteLine($"Sweepstake {name}");
+            Console.WriteLine($"Number of contestants registered: {contestants.Count}");
+            Console.WriteLine($"Status: {status}");
         }
 
         
