@@ -13,8 +13,8 @@ namespace Sweepstakes
             UserInterface.InitialDisplay();
             string stackOrQueue = UserInterface.GetManagerChoice();
             MarketingFirm newFirm = new MarketingFirm(stackOrQueue);
-            bool stillWorking = true;
-            while (stillWorking == true)
+            newFirm.stillWorking = true;
+            while (newFirm.stillWorking == true)
             {
                 newFirm.FirmMenu();
 

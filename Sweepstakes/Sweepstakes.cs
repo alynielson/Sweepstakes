@@ -13,6 +13,7 @@ namespace Sweepstakes
         
         public string name;
         private string status;
+        private Contestant winner;
 
        
 
@@ -27,6 +28,8 @@ namespace Sweepstakes
         {
             contestant.registrationNumber = contestants.Count + 1;
             contestants.Add(contestant.registrationNumber, contestant);
+            Console.WriteLine("Contestant successfully registered! Press Enter to continue.");
+            Console.ReadLine();
         }
 
         private Contestant FindContestantByRegistrationNumber(int possibleRegistrationNumber)
@@ -74,10 +77,17 @@ namespace Sweepstakes
 
         private Contestant GetContestantFromList(List<Contestant> possibleContestants)
         {
-            Console.WriteLine("Enter a number to view a contestant.");
-            int response = UserInterface.GetNumberResponse(1, possibleContestants.Count +1 );
-            Contestant contestantFromSearch = possibleContestants[response - 1];
-            return contestantFromSearch;
+            if (possibleContestants.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                Console.WriteLine("Enter a number to view a contestant.");
+                int response = UserInterface.GetNumberResponse(1, possibleContestants.Count + 1);
+                Contestant contestantFromSearch = possibleContestants[response - 1];
+                return contestantFromSearch;
+            }
         }
 
         private List<Contestant> FindContestantByName(string possibleName)
@@ -98,6 +108,8 @@ namespace Sweepstakes
             if (contestantMatches.Count == 0)
             {
                 Console.WriteLine("No matching person was found.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
             }
             return contestantMatches;
         }
@@ -115,10 +127,28 @@ namespace Sweepstakes
         private string PickWinner()
         {
             Random random = new Random();
-            int numberPicked = random.Next(1, contestants.Count + 1);
-            string nameOfWinner = $"{contestants[numberPicked].firstName} {contestants[numberPicked].lastName}";
-            status = "Winner chosen";
-            return nameOfWinner;
+            if (contestants.Count == 0)
+            {
+                Console.WriteLine("No winner chosen. No contestants are registered.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                return null;
+            }
+            else if (status == "Winner chosen")
+            {
+                Console.WriteLine("Winner was already chosen.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                return null;
+            }
+            else
+            {
+                int numberPicked = random.Next(1, contestants.Count + 1);
+                string nameOfWinner = $"{contestants[numberPicked].firstName} {contestants[numberPicked].lastName}";
+                status = "Winner chosen";
+                winner = contestants[numberPicked];
+                return nameOfWinner;
+            }
         }
 
         public void ConvertUserChoiceToAction(int action)
@@ -126,25 +156,40 @@ namespace Sweepstakes
             switch (action)
             {
                 case 1:
+                    Console.Clear();
                     Contestant newContestant = new Contestant();
                     RegisterContestant(newContestant);
+                    Console.Clear();
                     break;
                 case 2:
+                    Console.Clear();
                     Contestant contestant = SearchForContestant();
                     if (contestant != null)
                     {
                         PrintContestantInfo(contestant);
+                        Console.Clear();
                         break;
                     }
+                    Console.Clear();
                     break;
                 case 3:
+                    Console.Clear();
                     GetDetails();
+                    Console.Clear();
                     break;
                 case 4:
+                    Console.Clear();
                     string winner = PickWinner();
-                    UserInterface.DisplayWinner(winner);
+                    if (winner != null)
+                    {
+                        UserInterface.DisplayWinner(winner);
+                        Console.WriteLine("Press Enter to continue.");
+                        Console.ReadLine();
+                    }
+                    Console.Clear();
                     break;
                 default:
+                    Console.Clear();
                     break;
             }
         }
@@ -154,6 +199,12 @@ namespace Sweepstakes
             Console.WriteLine($"Sweepstake {name}");
             Console.WriteLine($"Number of contestants registered: {contestants.Count}");
             Console.WriteLine($"Status: {status}");
+            if (status == "Winner chosen")
+            {
+                Console.WriteLine($"Winner: {winner.firstName} {winner.lastName}");
+            }
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
         }
 
         

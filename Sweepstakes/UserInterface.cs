@@ -69,6 +69,7 @@ namespace Sweepstakes
             Console.WriteLine("Choose an option.");
             Console.WriteLine("(1) Add a new sweepstakes.");
             Console.WriteLine("(2) Search for a sweepstakes to view or edit.");
+            Console.WriteLine("(3) Quit.");
         }
 
         public static void NotFoundMessage(string whatNotFound)

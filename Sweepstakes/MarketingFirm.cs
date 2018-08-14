@@ -9,6 +9,7 @@ namespace Sweepstakes
     class MarketingFirm
     {
         private readonly ISweepstakesManager _sweepstakesManager;
+        public bool stillWorking;
         
 
         public MarketingFirm(string stackOrQueue)
@@ -51,6 +52,7 @@ namespace Sweepstakes
                     }
                     break;
                 default:
+                    stillWorking = false;
                     break;
                     
                     
