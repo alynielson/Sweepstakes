@@ -44,7 +44,7 @@ namespace Sweepstakes
             SmtpClient client = new SmtpClient("smtp.gmail.com");
             client.UseDefaultCredentials = false;
             client.Credentials = new System.Net.NetworkCredential("mailmansweepstakes@gmail.com", "badpassword12@");
-            client.Port = 25;     
+            client.Port = 587;     
             client.EnableSsl = true;
             try
             {
