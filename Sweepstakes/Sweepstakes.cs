@@ -14,13 +14,14 @@ namespace Sweepstakes
         public string name;
         private string status;
         private Contestant winner;
+        public bool isStillEditing;
 
        
 
         public Sweepstakes(string name)
         {
             contestants = new Dictionary<int, Contestant>();
-            this.name = name.ToLower().Trim();
+            this.name = name;
             status = "Registering contestants";
         }
 
@@ -98,7 +99,7 @@ namespace Sweepstakes
             int listNumber = 1;
             foreach (KeyValuePair<int, Contestant> item in contestants)
             {
-                if (possibleName == item.Value.firstName || possibleName == item.Value.lastName || possibleName == $"{item.Value.firstName} {item.Value.lastName}")
+                if (possibleName == item.Value.firstName.ToLower().Trim() || possibleName == item.Value.lastName.ToLower().Trim() || possibleName == $"{item.Value.firstName.ToLower().Trim()} {item.Value.lastName.ToLower().Trim()}")
                 {
                     Console.WriteLine($"({listNumber}) {item.Value.firstName} {item.Value.lastName}, Registration Number: {item.Value.registrationNumber}");
                     contestantMatches.Add(item.Value);
@@ -189,6 +190,7 @@ namespace Sweepstakes
                     Console.Clear();
                     break;
                 default:
+                    isStillEditing = false;
                     Console.Clear();
                     break;
             }

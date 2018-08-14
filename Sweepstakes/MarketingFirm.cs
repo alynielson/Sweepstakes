@@ -44,7 +44,8 @@ namespace Sweepstakes
                     break;
                 case 2:
                     Sweepstakes foundSweepstakes = FindASweepstakes();
-                    if (foundSweepstakes != null)
+                    foundSweepstakes.isStillEditing = true;
+                    while (foundSweepstakes != null && foundSweepstakes.isStillEditing == true)
                     {
                         UserInterface.SweepstakesFoundMenu(foundSweepstakes.name);
                         int action = UserInterface.GetNumberResponse(1, 6);
