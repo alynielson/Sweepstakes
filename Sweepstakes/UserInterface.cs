@@ -103,6 +103,11 @@ namespace Sweepstakes
             Console.WriteLine($"{whatFound} was found");
         }
 
+        public static void DisplayWinner(string winner)
+        {
+            Console.WriteLine($"{winner} has won!");
+        }
+
         public static void SweepstakesFoundMenu(string sweepstakesName)
         {
             Console.WriteLine($"Sweepstake {sweepstakesName}");

@@ -10,7 +10,7 @@ namespace Sweepstakes
     {
 
         public Dictionary<int, Contestant> contestants;
-        Random random;
+        
         public string name;
         private string status;
 
@@ -114,8 +114,9 @@ namespace Sweepstakes
 
         private string PickWinner()
         {
+            Random random = new Random();
             int numberPicked = random.Next(1, contestants.Count + 1);
-            string nameOfWinner = $"{contestants[numberPicked].firstName} + {contestants[numberPicked].lastName}";
+            string nameOfWinner = $"{contestants[numberPicked].firstName} {contestants[numberPicked].lastName}";
             status = "Winner chosen";
             return nameOfWinner;
         }
@@ -137,6 +138,10 @@ namespace Sweepstakes
                     }
                     break;
                 case 3:
+                    break;
+                case 4:
+                    string winner = PickWinner();
+                    UserInterface.DisplayWinner(winner);
                     break;
             }
         }

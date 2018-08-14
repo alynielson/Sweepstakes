@@ -9,11 +9,12 @@ namespace Sweepstakes
     class MarketingFirm
     {
         private readonly ISweepstakesManager _sweepstakesManager;
+        
 
         public MarketingFirm(string stackOrQueue)
         {
             _sweepstakesManager = ManagerFactory.GetSweepstakesManager(stackOrQueue);
-            Random random = new Random();
+            
         }
 
         private void AddSweepstakes()
